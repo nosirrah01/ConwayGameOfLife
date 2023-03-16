@@ -11,23 +11,49 @@ namespace ConwayNUnitTests
         }
 
         [Test]
-        public void Test1()
+        public void Test_GettingCellMatrixFromDeadGrid()
         {
-            Assert.Pass();
+            //arrange
+            Cell[,] testCellMatrix = new Cell[20, 25];
+            for (int col = 0; col < testCellMatrix.GetLength(0); col++)
+                for (int row = 0; row < testCellMatrix.GetLength(1); row++)
+                    testCellMatrix[col, row] = new Cell();
+
+            int height = 20;
+            int width = 25;
+
+            //act
+            Grid grid = new Grid(height, width);
+
+            //assert
+            Assert.That(grid.CellMatrix, Is.EqualTo(testCellMatrix));
         }
 
         [Test]
-        public void Test2()
+        public void Test_GettingCellMatrixFromPopulatedGrid()
         {
-            int height = 20;
-            int width = 25;
-            Grid grid = new Grid(height, width);
-            Cell[,] cells = new Cell[20,25];
-            for (int col = 0; col < cells.GetLength(0); col++)
-                for (int row = 0; row < cells.GetLength(1); row++)
-                    cells[col, row] =  new Cell();
+            //arrange
+            Cell[,] passedInCellMatrix = new Cell[2, 3];
+            passedInCellMatrix[0, 0] = new Cell(true);
+            passedInCellMatrix[0, 1] = new Cell();
+            passedInCellMatrix[0, 2] = new Cell(true);
+            passedInCellMatrix[1, 0] = new Cell();
+            passedInCellMatrix[1, 1] = new Cell(true);
+            passedInCellMatrix[1, 2] = new Cell();
 
-            Assert.That(grid.CellMatrix, Is.EqualTo(cells));
+            Cell[,] testCellMatrix = new Cell[2, 3];
+            testCellMatrix[0, 0] = new Cell(true);
+            testCellMatrix[0, 1] = new Cell();
+            testCellMatrix[0, 2] = new Cell(true);
+            testCellMatrix[1, 0] = new Cell();
+            testCellMatrix[1, 1] = new Cell(true);
+            testCellMatrix[1, 2] = new Cell();
+
+            //act
+            Grid grid = new Grid(passedInCellMatrix);
+
+            //assert
+            Assert.That(grid.CellMatrix, Is.EqualTo(testCellMatrix));
         }
     }
 }

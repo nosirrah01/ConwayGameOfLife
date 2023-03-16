@@ -26,6 +26,12 @@ namespace ConwayLogicLibrary
             this.isLive = isLive;
         }
 
-        
+        public override bool Equals(object obj)
+        {
+            if (isLive == ((Cell)obj).isLive)
+                return true;
+            else
+                return false;
+        }
     }
 }
