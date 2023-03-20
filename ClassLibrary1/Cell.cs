@@ -42,12 +42,13 @@ namespace ConwayLogicLibrary
              * Any live cell with more than three live neighbours dies, as if by overpopulation.
              * Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
              */
-            bool[] neighborLiveValues = new bool[] { n1, n2, n3, n4, n5, n6, n7, n8};
-            int AliveNeighborCount = 0;
-            for (int i = 0; i < neighborLiveValues.Length; i++)
-                if (neighborLiveValues[i] == true)
-                    AliveNeighborCount++;
+            bool[] neighborLiveValues = new bool[] { n1, n2, n3, n4, n5, n6, n7, n8 };
+            int AliveNeighborCount = GetAliveNeighborCount(neighborLiveValues);
+            DoRuleLogic(AliveNeighborCount);
+        }
 
+        private void DoRuleLogic(int AliveNeighborCount)
+        {
             switch (AliveNeighborCount)
             {
                 case 0:
@@ -55,6 +56,9 @@ namespace ConwayLogicLibrary
                     break;
                 case 1:
                     isLive = false;
+                    break;
+                case 3:
+                    isLive = true;
                     break;
                 case 4:
                     isLive = false;
@@ -72,8 +76,29 @@ namespace ConwayLogicLibrary
                     isLive = false;
                     break;
             }
+        }
 
-            
+        private static int GetAliveNeighborCount(bool[] neighborLiveValues)
+        {
+            int AliveNeighborCount = 0;
+            for (int i = 0; i < neighborLiveValues.Length; i++)
+                if (neighborLiveValues[i] == true)
+                    AliveNeighborCount++;
+            return AliveNeighborCount;
+        }
+
+        public void ApplyRulesToCell(bool n1, bool n2, bool n3, bool n4, bool n5)
+        {
+            bool[] neighborLiveValues = new bool[] { n1, n2, n3, n4, n5 };
+            int AliveNeighborCount = GetAliveNeighborCount(neighborLiveValues);
+            DoRuleLogic(AliveNeighborCount);
+        }
+
+        public void ApplyRulesToCell(bool n1, bool n2, bool n3)
+        {
+            bool[] neighborLiveValues = new bool[] { n1, n2, n3 };
+            int AliveNeighborCount = GetAliveNeighborCount(neighborLiveValues);
+            DoRuleLogic(AliveNeighborCount);
         }
     }
 }

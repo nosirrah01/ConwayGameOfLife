@@ -167,5 +167,382 @@ namespace ConwayNUnitTests
             //assert
             Assert.That(cell.IsLive, Is.EqualTo(false));
         }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith8DeadNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(false, false, false, false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith1LiveNeighborAnd7Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, false, false, false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith2LiveNeighborsAnd6Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false, false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith3LiveNeighborsAnd5Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith4LiveNeighborsAnd4Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith5LiveNeighborsAnd3Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith6LiveNeighborsAnd2Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true, true, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith7LiveNeighborsAnd1Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true, true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith8LiveNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true, true, true, true);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith5DeadNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith1LiveNeighborAnd4Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith2LiveNeighborsAnd3Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith3LiveNeighborsAnd2Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith4LiveNeighborsAnd1Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith5LiveNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith5DeadNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(false, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith1LiveNeighborAnd4Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, false, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith2LiveNeighborsAnd3Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith3LiveNeighborsAnd2Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith4LiveNeighborsAnd1Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith5LiveNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true, true, true);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith3DeadNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith1LiveNeighborAnd2Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith2LiveNeighborsAnd1Dead()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToLiveCellWith3LiveNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(true);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith3DeadNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(false, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith1LiveNeighborAnd2Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, false, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith2LiveNeighborsAnd1Dead()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, false);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(false));
+        }
+
+        [Test]
+        public void Test_ApplyRulesToDeadCellWith3LiveNeighbors()
+        {
+            //arrange
+            Cell cell = new Cell(false);
+
+            //act
+            cell.ApplyRulesToCell(true, true, true);
+
+            //assert
+            Assert.That(cell.IsLive, Is.EqualTo(true));
+        }
     }
 }
