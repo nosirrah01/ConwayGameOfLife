@@ -60,9 +60,9 @@ namespace ConwayLogicLibrary
 
         public Grid GenerateNextGrid()
         {
-            //Cell[,] nextCellMatrix = GenerateNextCellMatrix();
+            Cell[,] nextCellMatrix = GenerateNextCellMatrix();
 
-            Grid nextGrid = new Grid(cellMatrix);
+            Grid nextGrid = new Grid(nextCellMatrix);
             bool? n1 = null;
             bool? n2 = null;
             bool? n3 = null;
@@ -113,7 +113,7 @@ namespace ConwayLogicLibrary
             Cell[,] nextCellMatrix = new Cell[height, width];
             for (int row = 0; row < nextCellMatrix.GetLength(0); row++)
                 for (int col = 0; col < nextCellMatrix.GetLength(1); col++)
-                    nextCellMatrix[row, col].IsLive = cellMatrix[row, col].IsLive;
+                    nextCellMatrix[row, col] = new Cell(this.CellMatrix[row, col].IsLive);
             return nextCellMatrix;
         }
     }
