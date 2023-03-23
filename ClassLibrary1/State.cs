@@ -9,14 +9,19 @@ namespace ClassLibrary1
 {
     public class State
     {
-        public Grid CurrentGrid { get; }
+        public Grid CurrentGrid { get; set; }
         public Grid NextGrid { get; set; }
 
         public State(Grid currentGrid)
         {
             CurrentGrid = currentGrid;
+            NextGrid = currentGrid.GenerateNextGrid();
         }
 
-        
+        public void UpdateToNextState()
+        {
+            CurrentGrid = NextGrid;
+            NextGrid = CurrentGrid.GenerateNextGrid();
+        }
     }
 }

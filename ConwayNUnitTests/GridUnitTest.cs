@@ -144,7 +144,6 @@ namespace ConwayNUnitTests
             Assert.That(grid.GenerateNextGrid().CellMatrix[1, 1].IsLive, Is.EqualTo(false));
             Assert.That(grid.GenerateNextGrid().CellMatrix[1, 2].IsLive, Is.EqualTo(true));
 
-            // this one fails
             Assert.That(grid.GenerateNextGrid().CellMatrix[1, 3].IsLive, Is.EqualTo(false));
 
             Assert.That(grid.GenerateNextGrid().CellMatrix[1, 4].IsLive, Is.EqualTo(false));
@@ -152,14 +151,12 @@ namespace ConwayNUnitTests
             Assert.That(grid.GenerateNextGrid().CellMatrix[2, 1].IsLive, Is.EqualTo(false));
             Assert.That(grid.GenerateNextGrid().CellMatrix[2, 2].IsLive, Is.EqualTo(true));
             
-            // this one fails
             Assert.That(grid.GenerateNextGrid().CellMatrix[2, 3].IsLive, Is.EqualTo(false));
             
             Assert.That(grid.GenerateNextGrid().CellMatrix[2, 4].IsLive, Is.EqualTo(false));
             Assert.That(grid.GenerateNextGrid().CellMatrix[3, 0].IsLive, Is.EqualTo(false));
             Assert.That(grid.GenerateNextGrid().CellMatrix[3, 1].IsLive, Is.EqualTo(false));
             
-            // this one fails
             Assert.That(grid.GenerateNextGrid().CellMatrix[3, 2].IsLive, Is.EqualTo(true));
             
             Assert.That(grid.GenerateNextGrid().CellMatrix[3, 3].IsLive, Is.EqualTo(false));

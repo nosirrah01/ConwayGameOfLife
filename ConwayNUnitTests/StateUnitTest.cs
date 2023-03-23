@@ -25,7 +25,7 @@ namespace ConwayNUnitTests
             Assert.That(state.CurrentGrid, Is.EqualTo(testGrid));
         }
 
-        /*
+        
         [Test]
         public void Test_GetNextGridFromState()
         {
@@ -62,6 +62,49 @@ namespace ConwayNUnitTests
             //assert
             Assert.That(state.NextGrid.CellMatrix[1, 1].IsLive, Is.EqualTo(false));
         }
-        */
+
+        [Test]
+        public void Test_GetThirdStateFromGlider()
+        {
+            //arrange
+
+            Cell[,] gliderStartMatrix = new Cell[4, 3];
+            gliderStartMatrix[0, 0] = new Cell();
+            gliderStartMatrix[0, 1] = new Cell(true);
+            gliderStartMatrix[0, 2] = new Cell();
+            gliderStartMatrix[1, 0] = new Cell();
+            gliderStartMatrix[1, 1] = new Cell();
+            gliderStartMatrix[1, 2] = new Cell(true);
+            gliderStartMatrix[2, 0] = new Cell(true);
+            gliderStartMatrix[2, 1] = new Cell(true);
+            gliderStartMatrix[2, 2] = new Cell(true);
+            gliderStartMatrix[3, 0] = new Cell();
+            gliderStartMatrix[3, 1] = new Cell();
+            gliderStartMatrix[3, 2] = new Cell();
+
+            Grid currentGrid = new Grid(gliderStartMatrix);
+
+            //act
+            State state = new State(currentGrid);
+            state.UpdateToNextState();
+            state.UpdateToNextState();
+
+            //assert
+
+            Assert.That(state.CurrentGrid.CellMatrix[0, 0].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[0, 1].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[0, 2].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[1, 0].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[1, 1].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[1, 2].IsLive, Is.EqualTo(true));
+            Assert.That(state.CurrentGrid.CellMatrix[2, 0].IsLive, Is.EqualTo(true));
+            Assert.That(state.CurrentGrid.CellMatrix[2, 1].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[2, 2].IsLive, Is.EqualTo(true));
+            Assert.That(state.CurrentGrid.CellMatrix[3, 0].IsLive, Is.EqualTo(false));
+            Assert.That(state.CurrentGrid.CellMatrix[3, 1].IsLive, Is.EqualTo(true));
+            Assert.That(state.CurrentGrid.CellMatrix[3, 2].IsLive, Is.EqualTo(true));
+
+        }
+
     }
 }
