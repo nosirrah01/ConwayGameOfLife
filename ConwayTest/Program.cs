@@ -14,15 +14,20 @@ namespace ConwayTest
         {
             // note: default console app seems to be 120 columns and 30 rows, but gonna do 29 cause it has cursor line at bottom line
 
-            Cell[,] cells = new Cell[29,120];
+            Cell[,] cells = new Cell[29, 120];
             for (int row = 0; row < cells.GetLength(0); row++)
                 for (int col = 0; col < cells.GetLength(1); col++)
-                    cells[row, col] = new Cell();
-            cells[0,1].IsLive = true;
-            cells[1,2].IsLive = true;
-            cells[2,0].IsLive = true;
-            cells[2,1].IsLive = true;
-            cells[2,2].IsLive = true;
+                {
+                    var cell = new Cell();
+                    cell.IsLive = RandomCellLife();
+                    cells[row, col] = cell;
+                }
+        
+            //cells[0,1].IsLive = true;
+            //cells[1,2].IsLive = true;
+            //cells[2,0].IsLive = true;
+            //cells[2,1].IsLive = true;
+            //cells[2,2].IsLive = true;
             Grid grid = new Grid(cells);
             State state = new State(grid);
 
@@ -35,8 +40,8 @@ namespace ConwayTest
                 //Console.WriteLine("test");
 
                 System.Threading.Thread.Sleep(100);
-                Console.Clear();
                 state.UpdateToNextState();
+                Console.Clear();
             }
             
             /*
@@ -60,28 +65,40 @@ namespace ConwayTest
             Console.ReadLine();
         }
 
+        private static bool RandomCellLife()
+        {
+            long tick = DateTime.Now.Ticks;
+            Random rand = new Random((int)(tick & 0xffffffffL) | (int)(tick >> 32));
+            bool randomBool = rand.Next(2) == 0;
+
+            return randomBool;
+        }
+
         private static void PrintCurrentGameState(State state)
         {
+
             for (int row = 0; row < state.CurrentGrid.CellMatrix.GetLength(0); row++)
             {
+                string rowText = "";
                 for (int col = 0; col < state.CurrentGrid.CellMatrix.GetLength(1); col++)
                 {
-                    if (state.CurrentGrid.CellMatrix[row, col].IsLive)
-                    {
-                        //Console.Write('▓');
-                        Console.Write('0');
-                    }
-                    else
-                    {
-                        //Console.Write(' ');
-                        Console.Write('.');
-                    }
-                    
+                    rowText += (state.CurrentGrid.CellMatrix[row, col].IsLive) ? '0' : '.';
+                    //if (state.CurrentGrid.CellMatrix[row, col].IsLive)
+                    //{
+                    //    //Console.Write('▓');
+                    //    Console.Write('0');
+                    //}
+                    //else
+                    //{
+                    //    //Console.Write(' ');
+                    //    Console.Write('.');
+                    //}
+
                 }
-                Console.WriteLine();
+                Console.WriteLine(rowText);
 
             }
-                
+
         }
     }
 }
